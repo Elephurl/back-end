@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<ruleset name="Elephurl Coding Standard">
+    <description>PHP CodeSniffer configuration for Elephurl</description>
+
+    <!-- Use PSR-12 as the base standard -->
+    <rule ref="PSR12">
+        <!-- Allow snake_case test method names - PHPUnit convention uses this -->
+        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
+        <!-- Allow multiple classes per file in tests (for test doubles/helpers) -->
+        <exclude name="PSR1.Classes.ClassDeclaration.MultipleClasses"/>
+    </rule>
+
+    <!-- Allow longer lines -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="150"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- Allow side effects in bootstrap files -->
+    <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+        <exclude-pattern>bootstrap.php</exclude-pattern>
+    </rule>
+
+    <!-- Paths to check -->
+    <file>app</file>
+    <file>tests</file>
+    <file>public</file>
+
+    <!-- Exclude vendor directory -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+
+    <!-- Show progress -->
+    <arg value="p"/>
+
+    <!-- Show colors in output -->
+    <arg name="colors"/>
+
+    <!-- Show sniff codes in reports -->
+    <arg value="s"/>
+</ruleset>

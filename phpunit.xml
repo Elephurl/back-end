@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="depends,defects"
+         requireCoverageMetadata="false"
+         beStrictAboutCoverageMetadata="false"
+         beStrictAboutOutputDuringTests="true"
+         failOnRisky="true"
+         failOnWarning="true">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">app/Security</directory>
+            <directory suffix=".php">app/Services</directory>
+            <directory suffix=".php">app/Controllers</directory>
+            <directory suffix=".php">app/Http</directory>
+            <directory suffix=".php">app/Helpers</directory>
+            <directory suffix=".php">app/Contracts</directory>
+            <file>app/Container.php</file>
+            <file>app/Application.php</file>
+        </include>
+    </source>
+
+    <coverage>
+        <report>
+            <html outputDirectory="coverage"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+        </report>
+    </coverage>
+
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="REDIS_HOST" value="redis"/>
+        <env name="REDIS_PORT" value="6379"/>
+        <env name="MYSQL_HOST" value="mysql"/>
+        <env name="MYSQL_DATABASE" value="elephurl"/>
+        <env name="MYSQL_USER" value="elephurl"/>
+        <env name="MYSQL_PASSWORD" value="elephurl_secret"/>
+    </php>
+</phpunit>

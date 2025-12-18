@@ -1,0 +1,2 @@
+# Sync Redis metadata to MySQL every 5 minutes (simulates EventBridge)
+*/5 * * * * php /var/www/html/bin/sync-redis-to-mysql.php >> /var/log/cron.log 2>&1
